@@ -1,0 +1,695 @@
+<!--
+Program name: patient-form.html
+Author: Quoc Nguyen
+Date created: 02/19
+Date last edited: The date you submitted it
+Version: 2.0
+Description: patient information --> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles_sample.css" />
+    <title>Patient Registration Form</title>
+    <script src="sample.js"></script>
+</head>  
+<body>    
+        <!-- banner -->
+        <div class="banner">
+            <img src="output.jpg" alt="Vitalis Health & Wellness Logo">
+            <h1>Vitalis Health & Wellness</h1>
+        </div>
+
+        <div id="dateContainer">
+             <span id="currentDate"></span>
+        </div>
+
+<div id="name_information">
+    <h2 style="text-align: center;">Patient Registration</h2>
+    <form  id = myForm action="thankyou.html">
+        <table>
+            <!-- name-->
+             <!-- Add this element to your HTML to display error messages -->
+            <tr>
+                <td>
+                    <label for="first_name">First Name:</label>
+                </td>
+                
+                <td>
+                    <input type="text" 
+                           name="first_name" id="first_name" 
+                           maxlength="30" size="20" 
+                           required placeholder="Quoc"
+                           pattern="[A-Za-z'-]+" 
+                           title="Letters, apostrophes, and dashes only"
+                           onblur=" validateFullName() ">
+                    
+                    <label for="minit">MI:</label>
+                    <input type="text" 
+                           id="minit" 
+                           name="minit" 
+                           maxlength="1" 
+                           size="1" 
+                           placeholder="T"
+                           pattern="[A-Za-z]" 
+                           title="One letter only, no numbers"
+                           onblur="validateFullName()">
+                    
+                    <label for="last_name">Last Name:</label>
+                    <input type="text" 
+                           name="last_name" 
+                           id="last_name" 
+                           maxlength="30" 
+                           size="15" 
+                           required 
+                           placeholder="Nguyen"
+                           pattern="[A-Za-z'-]+" 
+                           title="Letters, apostrophes, and dashes only"
+                           onblur="validateFullName() ">
+                            <span id="validation_status" 
+                            class="status"> </span>
+                </td>
+            </tr>
+
+
+                <!--dob-->
+            <tr>
+                <td>
+                    <label for="dob">Date of Birth:</label>
+                </td>
+                <td>
+                    <input type="date" 
+                            name="dob" 
+                            id="dob" 
+                            required 
+                            placeholder="MM/DD/YYYY" 
+                            oninput="validateDOB()">
+                    <span id="dob_status" class="status"></span>
+                </td>
+            </tr>
+
+            <!-- Email Field -->
+            <tr>
+                <td>
+                    <label for="email">Email: </label>
+                </td>
+                <td>
+                    <input type="email" 
+                    name="email" 
+                    id="email" 
+                    required 
+                    placeholder="quoctan@xyz.com"
+                    pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                    title="Enter a valid email (e.g., name@domain.com)"
+                    onblur="validateEmail()">
+                        
+                        <span id="email_status" 
+                        class="status"></span>
+                </td>
+            </tr>
+
+            <!-- Phone Field -->
+            <tr>
+                <td>
+                    <label for="phone">Phone Number: </label>
+                </td>
+                <td>
+                    <input type="tel" 
+                    name="phone" 
+                    id="phone" 
+                    required 
+                    placeholder="000-000-0000"
+                    title="Enter a valid phone number (000-000-0000)"
+                    oninput="formatPhoneNumber();" 
+                    onblur="validatePhone()">
+                        <span id="phone_status" 
+                        class="status"></span>
+                </td>
+            </tr>
+
+            <!--snn-->
+            <tr>
+                <td>
+                    <label for="ssn">Social Security: </label>
+                </td>
+                <td>
+                    <input type="password" 
+                    name="ssn" 
+                    minlength="9" 
+                    maxlength="11" 
+                    required 
+                    placeholder="Enter your SSN">
+                    <span id="ssn_status" class="status"></span>
+                </td>
+            </tr>
+
+            <!-- Address Line 1 -->
+            <tr>
+                <td><label for="address1">Address Line 1:</label></td>
+                <td>
+                    <input type="text" 
+                    name="address1" 
+                    id="address1" 
+                    maxlength="30" 
+                    required 
+                    placeholder="1234 spindle dr" 
+                    onblur="validateAddress1()">
+                        <span id="address1_status" 
+                        class="status">
+                        </span>
+                </td>   
+            </tr>
+
+    <!-- Address Line 2 (Optional) -->
+        <tr>
+            <td><label for="address2">Address Line 2:</label>
+            </td>
+        <td>
+            <input type="text" 
+                   name="address2" 
+                   id="address2" 
+                   maxlength="30" 
+                   placeholder="Apt, Suite, etc." oninput="validateAddress2()">
+            <span id="address2_status" class="status"></span>
+        </td>
+    </tr>
+   
+    <tr>
+        <td><label for="city">City:</label></td>
+        <td>
+            <input type="text" 
+                    size="10" 
+                    maxlength="30" 
+                    id="city" 
+                    name="city" 
+                    required 
+                    placeholder="Houston"
+                    onblur="validateCityStateZip()">
+        
+        <!-- State -->
+        <label for="state">State:</label>
+        <select id="state" onchange="validateCityStateZip()"></select>
+            <!-- States will be populated by JavaScript -->
+        
+        
+        <!-- Zip Code -->
+                <label for="zip"> Zip Code:</label>
+                <input type="text" 
+                        size="12" 
+                        maxlength="10" 
+                        id="zip" 
+                        name="zip" 
+                        required 
+                        placeholder="77002(-1234)"
+                        oninput="validateCityStateZip()">
+            <span id="zip_status" 
+                  class="status"></span>
+    </td>
+  </tr>
+  
+        
+
+                <!-- textbox-->
+            <tr>
+                <td>Describe Your Symptoms:</td>
+                <td><textarea name="symptoms" 
+                              rows="3" 
+                              cols="50" 
+                              placeholder="Please describe your symptoms">
+                    </textarea>
+                </td>
+            </tr>
+            
+
+                <!-- Check Boxes (at least 1 section, of 5 or more choices)-->
+            <tr>
+                <td>Have you had any of the following?</td>
+                <td>
+                    <label><input type="checkbox" class = "illness" name="chicken_pox"> Chicken Pox</label>
+                    <label><input type="checkbox" class = "illness" name="measles"> Measles</label>
+                    <label><input type="checkbox" class = "illness" name="covid_19"> Covid-19</label>
+                    <label><input type="checkbox" class = "illness" name="small_pox"> Small Pox</label>
+                    <label><input type="checkbox" class = "illness" name="tetanus"> Tetanus</label>
+                </td>
+            </tr>
+            
+                <!-- Radio Buttons, at least 3 sets. -->
+            <tr>
+                <td>Gender:</td>
+                <td>
+                    <label><input type="radio" name="gender" value="male" required> Male</label>
+                    <label><input type="radio" name="gender" value="female" required> Female</label>
+                    <label><input type="radio" name="gender" value="other" required> Other</label>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>Have you been vaccinated?</td>
+                <td>
+                    <label><input type="radio" name="vaccinated" value="yes" required> Yes</label>
+                    <label><input type="radio" name="vaccinated" value="no" required> No</label>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>Do you have insurance?</td>
+                <td>
+                    <label><input type="radio" name="insurance" value="yes" required> Yes</label>
+                    <label><input type="radio" name="insurance" value="no" required> No</label>
+                </td>
+            </tr>
+
+            <!--health-->
+            <tr>
+                <td><label for="health">Health Scale:</label></td>
+                <td>
+                   <span 
+                   style = "display: flex; 
+                            align-items: center; 
+                            justify-content: center;"> 
+                    0<input type="range" id="health" name="health" min="1" max="10" value="5"  oninput="updateHealthValue()">10 </span>
+                <div 
+                    style="text-align: center; 
+                            margin-top: 5px;">
+                    <span id="health_value">
+                    5</span> <!-- Value displayed directly under the slider bar -->
+                </div>
+                </td>
+            </tr>
+
+                <!-- ID-->
+                <tr>
+                    <td>User ID:</td>
+                    <td>
+                        <input type="text" 
+                                id="user_id" 
+                                name="user_id" 
+                                maxlength="30" 
+                                required 
+                                placeholder="Enter your user ID"
+                                oninput= "validateUserID()">
+                        <span  id="user_id_status" 
+                               class="status"></span>
+                    </td>
+                </tr>
+
+                <!-- password -->
+                <tr>
+                    <td>Password:</td>
+                    <td>
+                        <input type="password" 
+                                id="password" 
+                                name="password"
+                                maxlength="30" 
+                                required 
+                                placeholder="Enter your password" 
+                                oninput= "validatePassword()">
+                                
+                        <span   id="password_status" 
+                                class="status"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Re-enter Password:</td>
+                    <td>
+                        <input type="password" 
+                               id="repassword" 
+                               name="repassword" 
+                               maxlength="30" 
+                               required 
+                               placeholder="Re-enter your password"
+                               oninput = "validateFields()">
+                        <span id="repassword_status" 
+                              class="status"></span>
+                    </td>
+                </tr>
+                
+                
+                <!--submit-->
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <button type="button" id="checkButton" onclick="checkInputFields()">Check Inputs</button>
+
+                    <button type="button" onclick="reviewForm()">Review</button>
+                    
+                    <!-- Add the button to your form -->
+                    <button type ="reset" onclick="resetForm()">Reset</button>     
+                    <!-- Update the submit button to be disabled by default -->
+                    <button id="submit" type="submit" disabled>Submit</button>
+               </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<hr id="footer-divider">
+<footer>
+    <table id="footer_table">
+        <tr>
+            <th>  <a href="https://vitalis.health/contact-us/"> Contact us</a> </td>
+        </tr>
+            <tr> 
+                <th>  Vitalis Health & Wellness </th>  
+                <td> 1 Chandos St </td>
+                <td> St Leonards NSW 2065 </td>
+             </tr>    
+        <tr>
+            <td> <a href = "tel:+1300848254">  Phone: 1300 848 254 </a> </td>
+        </tr>
+        
+    </table>
+</footer>
+
+
+
+
+
+ <!--review form-->
+ <table id="reviewSection" style="display: none; margin: 20px auto; padding: 10px; border: 1px solid #ccc; width: 80%; text-align: left;">
+    <tr>
+        <th colspan="3"><h3>Review Your Data Information</h3></th>
+    </tr>
+    <tr>
+        <th>Dataname</th>
+        <th>Type</th>
+        <th>Value</th>
+    </tr>
+    <tr>
+        <td><strong>first_name</strong></td>
+        <td> text </td>
+        <td><span id="reviewFirstName"></span></td>
+    </tr>
+    
+    <tr>
+        <td><strong>minit</strong></td>
+        <td> text </td>
+        <td><span id="reviewMiddleName"></span></td>
+    </tr>
+    <tr>
+        <td><strong>last_name</strong></td>
+        <td> text </td>
+        <td><span id="reviewLastName"></span></td>
+    </tr>
+
+    <tr>
+        <td><strong>dob</strong></td>
+        <td> date </td>
+        <td><span id="reviewDob"></span></td>
+    </tr>
+    <tr>
+        <td><strong>email</strong></td>
+        <td> email</td>
+        <td><span id="reviewEmail"></span></td>
+    </tr>
+    <tr>
+        <td><strong>phone</strong></td>
+        <td> text</td>
+        <td><span id="reviewPhone"></span></td>
+    </tr>    
+    
+    <tr>
+        <td><strong>ssn</strong></td>
+        <td>password</td>
+        <td><span id="reviewSsn"></span></td>
+    </tr>
+    <tr>
+        <td><strong>address1</strong></td>
+        <td> text</td>
+        <td><span id="reviewAddress1"></span></td>
+    </tr>
+    <tr>
+        <td><strong>address2</strong></td>
+        <td> text</td>
+        <td><span id="reviewAddress2"></span></td>
+    </tr>
+    <tr>
+        <td><strong>city</strong></td>
+        <td> text</td>
+        <td><span id="reviewCity"></span></td>
+    </tr>
+    <tr>
+        <td><strong>state</strong></td>
+        <td> select </td>
+        <td><span id="reviewState"></span></td>
+    </tr>
+    <tr>
+        <td><strong>zipcode</strong></td>
+        <td> text </td>
+        <td><span id="reviewZipcode"></span></td>
+    </tr>
+
+    <tr>
+        <td><strong>symptoms</strong></td>
+        <td> textarea </td>
+        <td><span id="reviewSymptoms"></span></td>
+    </tr>
+    <tr>
+        <td><strong>illness</strong></td>
+        <td> checkbox </td>
+        <td><span id="reviewIllnesses"></span></td>
+    </tr>
+    <tr>
+        <td><strong>gender</strong></td>
+        <td> radio </td>
+        <td><span id="reviewGender"></span></td>
+    </tr>
+    <tr>
+        <td><strong>vaccinated</strong></td>
+        <td> radio </td>
+        <td><span id="reviewVaccinated"></span></td>
+    </tr>
+    <tr>
+        <td><strong>insurance</strong></td>
+        <td> radio </td>
+        <td><span id="reviewInsurance"></span></td>
+    </tr>
+    <tr>
+        <td><strong>health_scale</strong></td>
+        <td> range </td>
+        <td><span id="reviewHealth"></span></td>
+    </tr>
+    <tr>
+        <td><strong>user_id</strong></td>
+        <td> text </td>
+        <td><span id="reviewUserId"></span></td>
+    </tr>
+    <tr>
+        <td><strong>password</strong></td>
+        <td> password </td>
+        <td><span id="reviewPassword"></span></td>
+    </tr>
+    <tr>
+        <td><strong>repassword</strong></td>
+        <td> password </td>
+        <td><span id="reviewRepassword"></span></td>
+    </tr> 
+    <tr>
+        <td><strong>Check Inputs Button</strong></td>
+        <td>button</td>
+        <td><span id="reviewCheckButton"></span></td>
+    </tr>
+    <tr>
+        <td><strong>Review Button</strong></td>
+        <td>button</td>
+        <td><span id="reviewButton"></span></td>
+    </tr>
+    <tr>
+        <td><strong>Reset Button</strong></td>
+        <td>button</td>
+        <td><span id="reviewReset"></span></td>
+    </tr>
+    <tr>
+        <td><strong>Submit Button</strong></td>
+        <td>button</td>
+        <td><span id="reviewSubmit"></span></td>
+    </tr>
+    
+</table>
+
+
+    <script> 
+        
+
+    function loadStates() {
+        const states = [
+            "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", 
+            "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", 
+            "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", 
+            "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", 
+            "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", 
+            "WY", "PR"
+        ];
+        
+        const stateSelect = document.getElementById("state");
+        
+        stateSelect.innerHTML = "";
+        
+        const nullOption = document.createElement("option");
+        nullOption.value = "";
+        nullOption.textContent = "Select a state";
+        nullOption.selected = true;
+        stateSelect.appendChild(nullOption);
+        
+        states.forEach(stateCode => {
+            const option = document.createElement("option");
+            option.value = stateCode;
+            option.textContent = stateCode;
+            stateSelect.appendChild(option);
+        });
+    }
+    document.addEventListener("DOMContentLoaded", loadStates);
+
+
+    function resetForm() {
+        // Reset all validation status elements
+        const statusElements = document.querySelectorAll(".status, .valid, .invalid");
+        statusElements.forEach(element => {
+            element.textContent = ""; // Clear the validation message
+            element.className = "status"; // Reset the class to default
+        });
+    
+        // Reset the form fields (optional, if you want to clear the form as well)
+        document.getElementById("yourFormId").reset();
+    
+        // Hide the review section if it's visible
+        const reviewSection = document.getElementById("reviewSection");
+        if (reviewSection) {
+            reviewSection.style.display = "none";
+        }
+    }
+    
+    // Add event listener to the reset button
+    document.querySelector('input[type="reset"]').addEventListener("click", resetForm);
+    
+
+function reviewForm() {
+    let reviewSection = document.getElementById('reviewSection');
+
+    // Toggle review section visibility
+    if (reviewSection.style.display === "block") {
+        reviewSection.style.display = "none";
+        return;
+    }
+
+    // Define field mappings: form field names -> corresponding span IDs
+    const fields = [
+        { name: "first_name", id: "reviewFirstName" },
+        { name: "minit", id: "reviewMiddleName" },
+        { name: "last_name", id: "reviewLastName" },
+        { name: "dob", id: "reviewDob" },
+        { name: "email", id: "reviewEmail" },
+        { name: "phone", id: "reviewPhone" },
+        { name: "ssn", id: "reviewSsn" },
+        { name: "address1", id: "reviewAddress1" },
+        { name: "address2", id: "reviewAddress2" },
+        { name: "city", id: "reviewCity" },
+        { name: "state", id: "reviewState" },
+        { name: "zip", id: "reviewZipcode" },
+        { name: "symptoms", id: "reviewSymptoms" },
+        { name: "user_id", id: "reviewUserId" },
+        { name: "health", id: "reviewHealth" },
+        { name: "password", id: "reviewPassword" },
+        { name: "repassword", id: "reviewRepassword" }
+    ];
+
+    // Loop through fields and update the review section
+    fields.forEach(field => {
+        let inputElement = document.querySelector(`[name="${field.name}"]`);
+        if (inputElement) {
+            document.getElementById(field.id).textContent = inputElement.value || " ";
+        }
+    });
+
+    // Get checked checkboxes (Illnesses)
+    let illnesses = Array.from(document.querySelectorAll('input.illness:checked'))
+        .map(checkbox => checkbox.parentElement.innerText)
+        .join(", ") || " ";
+    document.getElementById('reviewIllnesses').textContent = illnesses;
+
+    // Get selected radio button values
+    const radios = ["gender", "vaccinated", "insurance"];
+    radios.forEach(name => {
+        let value = document.querySelector(`input[name="${name}"]:checked`)?.value || "Not specified";
+        document.getElementById(`review${name.charAt(0).toUpperCase() + name.slice(1)}`).textContent = value;
+    });
+
+   // Get button values dynamically
+let checkButton = document.getElementById('checkButton')?.textContent || "Check Inputs";
+let reviewButton = document.querySelector('button[name="review"]')?.textContent || "Review";
+let resetButton = document.querySelector('input[type="reset"]')?.value || "Reset";
+let submitButton = document.querySelector('input[type="submit"]')?.value || "Submit";
+
+// Assign button values to the review table
+document.getElementById('reviewCheckButton').textContent = checkButton;
+document.getElementById('reviewButton').textContent = reviewButton;
+document.getElementById('reviewReset').textContent = resetButton;
+document.getElementById('reviewSubmit').textContent = submitButton;
+
+    // Show the review section
+    reviewSection.style.display = "block";
+}
+
+
+function checkInputFields() {
+    if (!validateFullName()) {
+        window.alert("Please correct your full name.");
+        document.getElementById("first_name").focus();
+        return;
+    }
+    if (!validateDOB()) {
+        window.alert("Please correct your date of birth.");
+        document.getElementById("dob").focus();
+        return;
+    }
+    if (!validateEmail()) {
+        window.alert("Please correct your email.");
+        document.getElementById("email").focus();
+        return;
+    }
+    if (!validatePhone()) {
+        window.alert("Please correct your phone number.");
+        document.getElementById("phone").focus();
+        return;
+    }
+    if (!validateAddress1()) {
+        window.alert("Please correct your address line 1.");
+        document.getElementById("address1").focus();
+        return;
+    }
+    if (!validateAddress2()) {
+        window.alert("Please correct your address line 2.");
+        document.getElementById("address2").focus();
+        return;
+    }
+    if (!validateCityStateZip()) {
+        window.alert("Please correct your city, state, or zip code.");
+        document.getElementById("city").focus();
+        return;
+    }
+    if (!validateUserID()) {
+        window.alert("Please correct your user ID.");
+        document.getElementById("user_id").focus();
+        return;
+    }
+    if (!validatePassword()) {
+        window.alert("Please correct your password.");
+        document.getElementById("password").focus();
+        return;
+    }
+    if (!validateRepassword()) {
+        window.alert("Please correct your re-enter password.");
+        document.getElementById("repassword").focus();
+        return;
+    }
+
+    window.alert("All fields are valid!");
+}
+
+    </script>
+    
+    
+    
+</body>
+</html>
