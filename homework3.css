@@ -1,0 +1,195 @@
+/*
+Program name: thankyou.html
+Author: Quoc Nguyen
+Date created: 02/20
+Date last edited: The date you submitted it
+Version: 2.0
+Description: patient information 
+*/
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+h1, h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #2c3e50;
+    text-align: center;
+}
+
+/* Banner Styling */
+.banner {
+    background-color: #4a9dcf; 
+    color: white;
+    padding: 20px 40px; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 8px; /* Rounded corners for a modern look */
+    margin-bottom: 15px; /* Slightly larger bottom margin */
+}
+
+/* Logo Styling */
+.banner img {
+    width: 120px; /* Adjusted size for better visibility */
+    height: auto;
+    border-radius: 10px; /* More rounded corners on logo */
+}
+
+/* Banner Title */
+.banner h1 {
+    font-size: 28px; /* Larger title for emphasis */
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+}
+
+/* Body Styling */
+body {
+   
+    text-align: center;
+    background-color:#e6f7ff; /* Light blue background for a calming effect */
+    margin: 0;
+    padding-top: 20px; /* Added top padding to separate from banner */
+}
+
+/* Table Cell Label Spacing*/
+td label {
+   display:inline-block;
+   margin-right :20 px ;/* Adds some spacing between the options */ 
+}
+
+/* button */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: red; /* Default color for non-submit buttons */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #45a049; /* Hover effect for non-submit buttons */
+}
+
+
+/* Footer Styling */
+#footer_table {
+    text-align: center;
+    padding: 20px;
+    background-color: #4a9dcf;
+    border-top: 1px solid #ddd;
+    font-family: Arial, sans-serif;
+    width: 100%;
+}
+ 
+#footer_table a {
+    color: #f1f1f1;
+    text-decoration: none;
+}
+
+#footer_table a:hover {
+    text-decoration: underline;
+}
+
+/* Footer divider styling */
+#footer-divider {
+    border: none;
+    height: 0px;
+    margin: 1;
+}
+
+ 
+#name_information {
+    display: inline-block;
+    text-align: left;
+    padding: 20px;
+    margin-top: 20px;
+}
+table {
+    margin: 0 auto;
+}
+
+#name_information {
+    display: inline-block;
+    text-align: left;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+#currentDate {
+    display: inline-block;
+    margin-left: 400px;
+}
+
+
+/*review table*/
+#reviewSection {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    display: none;
+    font-family: Georgia, 'Times New Roman', Times, serif
+}
+
+#reviewSection th, #reviewSection td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+#reviewSection th {
+    background-color: lightseagreen;
+    font-size: 18px;
+    text-align: center;
+}
+
+#reviewSection td span {
+    font-weight: bold;
+    color: #333;
+}
+
+.status {
+    margin-top: 10px;
+}
+
+.valid {
+    color: green; /* Green color for success */
+    font-size: 12px;
+}
+
+.invalid {
+    color: red; /* Red color for errors */
+    font-size: 12px;
+}
+
+
+/*submit check button */
+
+#submit {
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+    opacity: 0.7;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#submit:enabled {
+    background-color: green;
+    cursor: pointer;
+    opacity: 1;
+}
+
+#submit:enabled:hover {
+    background-color: darkgreen;
+}
+
+
+
