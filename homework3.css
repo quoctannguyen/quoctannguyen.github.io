@@ -1,7 +1,7 @@
 /*
 Program name: thankyou.html
 Author: Quoc Nguyen
-Date created: 02/20
+Date created: 04/15
 Date last edited: The date you submitted it
 Version: 2.0
 Description: patient information 
@@ -20,6 +20,7 @@ h1, h2 {
 
 /* Banner Styling */
 .banner {
+    width: 100%;
     background-color: #4a9dcf; 
     color: white;
     padding: 20px 40px; 
@@ -28,6 +29,8 @@ h1, h2 {
     justify-content: space-between;
     border-radius: 8px; /* Rounded corners for a modern look */
     margin-bottom: 15px; /* Slightly larger bottom margin */
+    position: sticky;
+    top: 0;
 }
 
 /* Logo Styling */
@@ -85,6 +88,9 @@ button:hover {
     border-top: 1px solid #ddd;
     font-family: Arial, sans-serif;
     width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 1000; 
 }
  
 #footer_table a {
@@ -99,7 +105,7 @@ button:hover {
 /* Footer divider styling */
 #footer-divider {
     border: none;
-    height: 0px;
+    height: 50px;
     margin: 1;
 }
 
