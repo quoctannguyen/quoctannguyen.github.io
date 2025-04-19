@@ -1,3 +1,11 @@
+<!--
+Program name: patient-form.html
+Author: Quoc Nguyen
+Date created: 02/19
+Date last edited: The date you submitted it
+Version: 2.0
+Description: patient information --> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +14,7 @@
     <link rel="stylesheet" href="homework3.css" />
     <title>Patient Registration Form</title>
     <script src="homework3.js"></script>
+
 </head>  
 <body>    
         <!-- banner -->
@@ -336,7 +345,56 @@
     </form>
 </div>
 
+<div style="display: flex; width: 100%; margin: 0; font-family: Arial, sans-serif;">
+    <!-- Map Container (50%) -->
+    <div style="width: 50%; height: 400px;">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3312.783434600575!2d151.1986373152105!3d-33.86788298065699!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b12ae3c5d3f85a5%3A0x1c3d3f5d3f5d3f5d!2s1%20Chandos%20St%2C%20St%20Leonards%20NSW%202065!5e0!3m2!1sen!2sau!4v1620000000000!5m2!1sen!2sau"
+        width="100%"
+        height="100%"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+      ></iframe>
+    </div>
+  
+    <!-- Clinic Info (50%) -->
+    <div style="width: 50%; padding: 25px; background: #f8fafc; box-sizing: border-box;">
+      <h2 style="color: #2c3e50; margin-top: 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 10px;">Vitalis Health & Wellness</h2>
+      
+      <div style="margin-bottom: 20px;">
+        <h3 style="color: #4a90e2; margin-bottom: 5px;">Address</h3>
+        <p style="margin: 0; color: #4a5568;">
+          1 Chandos St<br>
+          St Leonards NSW 2065<br>
+          Australia
+        </p>
+      </div>
+      
+      <div style="margin-bottom: 20px;">
+        <h3 style="color: #4a90e2; margin-bottom: 5px;">Hours</h3>
+        <ul style="margin: 0; padding-left: 20px; color: #4a5568;">
+          <li>Monday-Friday: 8:30am - 5:30pm</li>
+          <li>Saturday-Sunday: Closed</li>
+        </ul>
+      </div>
+      
+      <div>
+        <h3 style="color: #4a90e2; margin-bottom: 5px;">Contact</h3>
+        <p style="margin: 0; color: #4a5568;">
+          Phone: 1300 848 254<br>
+          Email: info@vitalis.health
+        </p>
+      </div>
+    </div>
+  </div>
+ 
+  
+
 <hr id="footer-divider">
+<!-- Spacer div to prevent footer overlap -->
+<div style="height: 100px;"></div>
+
 <footer>
     <table id="footer_table">
         <tr>
@@ -499,6 +557,7 @@
     </tr>
     
 </table>
+
     
 </body>
 </html>
