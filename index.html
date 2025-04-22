@@ -1,7 +1,7 @@
 <!--
 Program name: patient-form.html
 Author: Quoc Nguyen
-Date created: 02/19
+Date created: 04/22
 Date last edited: The date you submitted it
 Version: 2.0
 Description: patient information --> 
@@ -14,9 +14,14 @@ Description: patient information -->
     <link rel="stylesheet" href="homework3.css" />
     <title>Patient Registration Form</title>
     <script src="homework3.js"></script>
+    <script src="cookiee.js"></script>
 
 </head>  
-<body>    
+<body>   
+      <!-- Welcome Message -->
+      <div id="welcomeMessage" style="text-align: center; padding: 10px; background-color: #f0f0f0;"></div>
+
+      
         <!-- banner -->
         <div class="banner">
             <img src="output.jpg" alt="Vitalis Health & Wellness Logo">
@@ -340,8 +345,14 @@ Description: patient information -->
                     <!-- Update the submit button to be disabled by default -->
                     <button id="submit" type="submit" disabled>Submit</button>
                </td>
+            
             </tr>
         </table>
+        <tr>
+            <td colspan="2" style="text-align: center;">
+                <label><input type="checkbox" id="rememberMe" name="rememberMe" checked> Remember Me</label>
+            </td>
+        </tr>
     </form>
 </div>
 
